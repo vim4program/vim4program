@@ -47,7 +47,7 @@ Bundle 'DoxygenToolkit.vim'
 "	:ConqueTerm <command>
 Bundle 'Conque-Shell'
 " Autodetect multiple encodings
-Bundle 'FencView.vim'
+"Bundle 'FencView.vim'
 " XP's Snippet Template engine for vim
 " for<C-\>
 Bundle 'xptemplate'
@@ -87,14 +87,14 @@ filetype plugin indent on " required
 """"""""""""""""""""""""""""""""""""""""""""
 " encodings
 " auto
-let g:fencview_autodetect = 1
+let g:fencview_autodetect = 0
 " manual
 "set fenc=cp936
 "set enc=cp936
-"set fenc=utf-8
-"set enc=utf-8
-"set fencs=cp936,ucs-bom,utf-8,gb18030,big5,euc-jp,sjis,euc-kr,ucs-21e,lation1
-"let &termencoding=&encoding
+set fenc=utf-8
+set enc=utf-8
+set fencs=cp936,ucs-bom,utf-8,gb18030,big5,euc-jp,sjis,euc-kr,ucs-21e,lation1
+let &termencoding=&encoding
 
 " Syntax highlighting
 syntax on
