@@ -9,17 +9,44 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 """"" utility
+" Source code browser (supports C/C++, java, perl, python, tcl, sql, php, etc)
+" Usage: tl
 Bundle 'taglist.vim'
+" Display tags of the current file ordered by scope
 Bundle 'Tagbar'
 " Plugin to add tab bar ( derived from miniBufExplorer).
+" Usage: tb
 Bundle 'TabBar'
+" A windows style IDE for Vim
+" Usage: wm
 Bundle 'winmanager'
+" A tree explorer plugin for navigating the filesystem
+" Usage: nt
 Bundle 'The-NERD-tree'
+" A plugin that allows for easy commenting of code for many filetypes
+" Usage:
+"	\cc: Comments out the current line or text selected in visual mode.
+"	\c<space>: Toggles the comment state of the selected line(s).
+"	\cu: Uncomments the selected line(s).
 Bundle 'The-NERD-Commenter'
+" Alternate Files quickly (.c --> .h etc)
+" Usage: 
+"	:A switches to the header file
 Bundle 'a.vim'
+" Simplify Doxygen documentation in C, C++, Python.
+" Usage:
+"	:Dox
+"	:DoxAuthor
+"	:DoxLic
+"	:DoxBlock
+"	:DoxUndoc
 Bundle 'DoxygenToolkit.vim'
 "Bundle 'superSnipMate'
+" Run interactive commands inside a Vim buffer
+" Usage:
+"	:ConqueTerm <command>
 Bundle 'Conque-Shell'
+" Autodetect multiple encodings
 Bundle 'FencView.vim'
 " XP's Snippet Template engine for vim
 " for<C-\>
@@ -251,3 +278,6 @@ nmap <silent> wm :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> W
 
 " indent guides
 let g:indent_guides_guide_size=1
+
+" tagbar
+nmap tb :TagbarToggle<CR>
