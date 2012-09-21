@@ -1,4 +1,11 @@
 """"""""""""""""""""""""""""""""""""""""""""
+" tips
+""""""""""""""""""""""""""""""""""""""""""""
+" show previsously given messages
+" 查看vim启动时一闪而过的错误消息时很有用
+" :mes[sages]
+
+""""""""""""""""""""""""""""""""""""""""""""
 " vundle
 """"""""""""""""""""""""""""""""""""""""""""
 filetype off " required
@@ -45,7 +52,7 @@ Bundle 'DoxygenToolkit.vim'
 " Run interactive commands inside a Vim buffer
 " Usage:
 "	:ConqueTerm <command>
-Bundle 'Conque-Shell'
+"Bundle 'Conque-Shell'
 " Autodetect multiple encodings
 "Bundle 'FencView.vim'
 " XP's Snippet Template engine for vim
@@ -66,10 +73,15 @@ Bundle 'ShowMarks7'
 " :Tabularize /,
 Bundle 'Tabular'
 
+" The ultimate vim statusline utility
+Bundle 'Lokaltog/vim-powerline'
+
 """"" ftplugin
 " Bundle 'OmniCppComplete'
 Bundle 'pyflakes.vim'
 Bundle 'xml.vim'
+" Show the function's define.
+Bundle 'ShowFunc.vim'
 
 """"" syntax
 Bundle 'python.vim'
@@ -246,8 +258,8 @@ endfunction
 map <F8> :call GenerateTags()<CR>
 
 " fold
-set foldmethod=syntax
-set foldnestmax=2
+"set foldmethod=syntax
+"set foldnestmax=2
 
 """"""""""""""""""""""""""""""""""""""""""""
 " plugins
@@ -270,7 +282,7 @@ function! NERDTree_Start()
     exe 'NERDTree'
 endfunction
 function! NERDTree_IsValid()
-    return 1
+"    return 1
 endfunction
 
 let g:winManagerWindowLayout='NERDTree|TagList|BufExplorer'
@@ -281,3 +293,10 @@ let g:indent_guides_guide_size=1
 
 " tagbar
 nmap tb :TagbarToggle<CR>
+
+"ShowMarks
+let g:showmarks_enable = 1
+let g:showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+
+" powerline
+let g:Powerline_theme = 'skwp'
