@@ -76,9 +76,41 @@ Bundle 'Tabular'
 " The ultimate vim statusline utility
 Bundle 'Lokaltog/vim-powerline'
 
+" a C-reference manual especially designed for Vim
+"Bundle 'CRefVim'
+
+" Functions and mappings to close open HTML/XML tags
+" Usage: ctrl-_
+Bundle 'closetag.vim'
+
+" a simple IDE for C/C++
+Bundle 'Side-C'
+
+" A C++ Standard Template Library reference manual
+" Usage: <Leader>tr: go to documentation for the function
+"        <Leader>te: go to an example that uses this function
+Bundle 'stlrefvim'
+
+" Eclipse like task list
+" Usage: <leader>t
+"	     q Quit
+"	     e Exit
+"	     <cr>
+Bundle 'TaskList.vim'
+
+" vim motions on speed
+" Usage: <leader><leader>w
+"        <leader><leader>fa
+Bundle 'EasyMotion'
+
 """"" ftplugin
 " Bundle 'OmniCppComplete'
-Bundle 'pyflakes.vim'
+"Bundle 'pyflakes.vim'
+
+" run the currently open file through Flake8
+" Usage: F7
+Bundle 'vim-flake8'
+
 Bundle 'xml.vim'
 " Show the function's define.
 Bundle 'ShowFunc.vim'
