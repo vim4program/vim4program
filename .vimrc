@@ -103,7 +103,11 @@ Bundle 'TaskList.vim'
 "        <leader><leader>fa
 Bundle 'EasyMotion'
 
+" vim-script library
+Bundle 'L9'
+
 " buffer/file/command/tag/etc explorer with fuzzy matching
+" based on L9
 Bundle 'FuzzyFinder'
 
 """"" ftplugin
