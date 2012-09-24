@@ -103,6 +103,9 @@ Bundle 'TaskList.vim'
 "        <leader><leader>fa
 Bundle 'EasyMotion'
 
+" buffer/file/command/tag/etc explorer with fuzzy matching
+Bundle 'FuzzyFinder'
+
 """"" ftplugin
 " Bundle 'OmniCppComplete'
 "Bundle 'pyflakes.vim'
