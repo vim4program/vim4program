@@ -144,7 +144,7 @@ let g:fencview_autodetect = 0
 "set enc=cp936
 set fenc=utf-8
 set enc=utf-8
-set fencs=cp936,ucs-bom,utf-8,gb18030,big5,euc-jp,sjis,euc-kr,ucs-21e,lation1
+set fencs=utf-8,cp936,ucs-bom,gb18030,big5,euc-jp,sjis,euc-kr,ucs-21e,lation1
 let &termencoding=&encoding
 
 " Syntax highlighting
