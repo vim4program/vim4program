@@ -16,6 +16,8 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 """"" utility
+Bundle 'vimwiki'
+" Syntax file for Markdown text-to-HTML language
 " Source code browser (supports C/C++, java, perl, python, tcl, sql, php, etc)
 " Usage: tl
 Bundle 'taglist.vim'
@@ -144,7 +146,7 @@ let g:fencview_autodetect = 0
 "set enc=cp936
 set fenc=utf-8
 set enc=utf-8
-set fencs=utf-8,cp936,ucs-bom,gb18030,big5,euc-jp,sjis,euc-kr,ucs-21e,lation1
+set fencs=cp936,ucs-bom,utf-8,gb18030,big5,euc-jp,sjis,euc-kr,ucs-21e,lation1
 let &termencoding=&encoding
 
 " Syntax highlighting
@@ -339,3 +341,18 @@ let g:showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0
 
 " powerline
 let g:Powerline_theme = 'skwp'
+" vimwiki
+"if has("win32")  
+"	let $VIMFILES = $VIM.'/vimfiles'
+"else  
+"	let $VIMFILES = $HOME.'/.vim/wiki'
+"endif
+
+"let g:vimwiki_list = [{'html_header': '~/vimwiki_html/headers.tpl'}]
+"let g:vimwiki_list = [{'path': '~/vimwiki/',
+"			\ 'syntax': 'markdown', 'ext': '.md'}]
+"let g:vimwiki_ext2syntax = {'.md':'markdown','.markdown':'markdown','.mdown':'markdown','.mkd':'markdown'}
+"
+"" markdown to html
+""let mapleader = ","
+"nnoremap <leader>md :%!/usr/local/bin/Markdown.pl --html4tags <CR>
