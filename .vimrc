@@ -16,11 +16,11 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 """"" utility
-Bundle 'vimwiki'
-" Syntax file for Markdown text-to-HTML language
 " Source code browser (supports C/C++, java, perl, python, tcl, sql, php, etc)
 " Usage: tl
 Bundle 'taglist.vim'
+" A plugin to diff and merge two directories recursively.
+"Bundle 'DirDiff.vim'
 " Display tags of the current file ordered by scope
 Bundle 'Tagbar'
 " Plugin to add tab bar ( derived from miniBufExplorer).
@@ -64,7 +64,9 @@ Bundle 'vim4program/template_loader'
 " Ultimate auto completion system for Vim
 Bundle 'neocomplcache'
 " Automatic syntax checking
-Bundle 'Syntastic'
+"Bundle 'Syntastic'
+" auto completion
+"Bundle 'Valloric/YouCompleteMe'
 " Visually shows the location of marks
 " \mt : Toggles ShowMarks on and off.
 " \mh : Hides an individual mark.
@@ -76,7 +78,10 @@ Bundle 'ShowMarks7'
 Bundle 'Tabular'
 
 " The ultimate vim statusline utility
-Bundle 'Lokaltog/vim-powerline'
+"Bundle 'Lokaltog/powerline'
+
+" The ultimate vim statusline utility
+Bundle 'bling/vim-airline'
 
 " a C-reference manual especially designed for Vim
 "Bundle 'CRefVim'
@@ -112,8 +117,12 @@ Bundle 'L9'
 " based on L9
 Bundle 'FuzzyFinder'
 
+" Plugin for managing wordpress blog from Vim.
+"Bundle 'VimRepress'
+
 """"" ftplugin
-" Bundle 'OmniCppComplete'
+Bundle 'javacomplete'
+"Bundle 'OmniCppComplete'
 "Bundle 'pyflakes.vim'
 
 " run the currently open file through Flake8
@@ -146,7 +155,7 @@ let g:fencview_autodetect = 0
 "set enc=cp936
 set fenc=utf-8
 set enc=utf-8
-set fencs=cp936,ucs-bom,utf-8,gb18030,big5,euc-jp,sjis,euc-kr,ucs-21e,lation1
+set fencs=utf-8,cp936,ucs-bom,gb18030,big5,euc-jp,sjis,euc-kr,ucs-21e,lation1
 let &termencoding=&encoding
 
 " Syntax highlighting
@@ -166,6 +175,7 @@ filetype indent on
 
 " color theme
 colorscheme colorer
+"colorscheme desert
 
 " wildmode
 set wildmenu
@@ -197,8 +207,9 @@ set incsearch
 """"""""""""""""""""""""""""""""""""""""""""
 " display status line
 set laststatus=2
+"set t_Co=256
 " customize status line
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
 
 """"""""""""""""""""""""""""""""""""""""""""
 " indent settings
@@ -270,23 +281,23 @@ au FileType xml,html,c,cpp,java,python,shell,perl,php inoremap " <c-r>=ClosePair
 let g:template_load = 1 
 let g:template_tags_replacing = 1 
 let g:T_AUTHOR = "sushanghai"
-let g:T_AUTHOR_EMAIL = "shanghai.sush@alibaba-inc.com"
-let g:T_AUTHOR_WEBSITE = "http://www.alibaba.com"
+let g:T_AUTHOR_EMAIL = "shanghai.sush@taobao.com"
+let g:T_AUTHOR_WEBSITE = "http://www.taobao.com"
 let g:T_DATE_FORMAT = "%F %T"
 
 """"""""""""""""""""""""""""""""""""""""""""
 " ctags and cscope
 """"""""""""""""""""""""""""""""""""""""""""
 function! GenerateTags()
-	let tmp_dir = "$HOME/.vim/tmp"
+	let tmp_dir = $HOME . "/.vim/tmp"
 	let dir = getcwd()
 
-	if exists(tmp_dir)
+	if !isdirectory(tmp_dir)
 		call mkdir(tmp_dir)
 	endif
 
 	if(executable('cscope') && has('cscope'))
-		sil! exec '!find ' . dir . ' -name "*.cpp" -o -name "*.hpp" -o -name "*.h" -o -name "*.c"> ' . tmp_dir . '/cscope.files'
+		sil! exec '!find ' . dir . ' -name "*.cpp" -o -name "*.hpp" -o -name "*.hh" -o -name "*.h" -o -name "*.c"> ' . tmp_dir . '/cscope.files'
 		let l:cs_cmd = 'cd ' . tmp_dir . ' && cscope -bkq -i cscope.files'
 		sil! echo system(l:cs_cmd)
 		exec '!ctags -L ' . tmp_dir .'/cscope.files --extra=+q --fields=+iaS --c++-kinds=+p --verbose=yes -f ' . tmp_dir . '/tags'
@@ -331,6 +342,9 @@ nmap <silent> wm :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> W
 
 " indent guides
 let g:indent_guides_guide_size=1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 " tagbar
 nmap tb :TagbarToggle<CR>
@@ -339,20 +353,15 @@ nmap tb :TagbarToggle<CR>
 let g:showmarks_enable = 1
 let g:showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
-" powerline
-let g:Powerline_theme = 'skwp'
-" vimwiki
-"if has("win32")  
-"	let $VIMFILES = $VIM.'/vimfiles'
-"else  
-"	let $VIMFILES = $HOME.'/.vim/wiki'
-"endif
+" javacomplete
+setlocal omnifunc=javacomplete#Complete
+setlocal completefunc=javacomplete#CompleteParamsInfo
+inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P>
+inoremap <buffer> <C-S-Space> <C-X><C-U><C-P>
+autocmd Filetype java inoremap <buffer> . .<C-X><C-O><C-P>
 
-"let g:vimwiki_list = [{'html_header': '~/vimwiki_html/headers.tpl'}]
-"let g:vimwiki_list = [{'path': '~/vimwiki/',
-"			\ 'syntax': 'markdown', 'ext': '.md'}]
-"let g:vimwiki_ext2syntax = {'.md':'markdown','.markdown':'markdown','.mdown':'markdown','.mkd':'markdown'}
-"
-"" markdown to html
-""let mapleader = ","
-"nnoremap <leader>md :%!/usr/local/bin/Markdown.pl --html4tags <CR>
+" showmarks color setting
+hi default ShowMarksHLl ctermfg=Yellow ctermbg=black cterm=bold guifg=blue guibg=lightblue gui=bold
+hi default ShowMarksHLu ctermfg=Yellow ctermbg=blue cterm=bold guifg=blue guibg=lightblue gui=bold
+hi default ShowMarksHLo ctermfg=Yellow ctermbg=blue cterm=bold guifg=blue guibg=lightblue gui=bold
+hi default ShowMarksHLm ctermfg=Yellow ctermbg=blue cterm=bold guifg=blue guibg=lightblue gui=bold
