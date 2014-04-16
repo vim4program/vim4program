@@ -25,7 +25,8 @@ Bundle 'taglist.vim'
 Bundle 'Tagbar'
 " Plugin to add tab bar ( derived from miniBufExplorer).
 " Usage: tb
-Bundle 'TabBar'
+"Bundle 'TabBar'
+Bundle 'bufferlist.vim'
 " A windows style IDE for Vim
 " Usage: wm
 Bundle 'winmanager'
@@ -349,6 +350,9 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 " tagbar
 nmap tb :TagbarToggle<CR>
 
+"map <silent> <F3> :call BufferList()<CR>
+nmap bl :call BufferList()<CR>
+
 "ShowMarks
 let g:showmarks_enable = 1
 let g:showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -365,3 +369,6 @@ hi default ShowMarksHLl ctermfg=Yellow ctermbg=black cterm=bold guifg=blue guibg
 hi default ShowMarksHLu ctermfg=Yellow ctermbg=blue cterm=bold guifg=blue guibg=lightblue gui=bold
 hi default ShowMarksHLo ctermfg=Yellow ctermbg=blue cterm=bold guifg=blue guibg=lightblue gui=bold
 hi default ShowMarksHLm ctermfg=Yellow ctermbg=blue cterm=bold guifg=blue guibg=lightblue gui=bold
+
+" no save in buffer
+set hidden
