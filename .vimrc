@@ -13,7 +13,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 """"" required
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 
 """"" utility
 " Source code browser (supports C/C++, java, perl, python, tcl, sql, php, etc)
