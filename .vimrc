@@ -9,8 +9,8 @@
 " vundle
 """"""""""""""""""""""""""""""""""""""""""""
 filetype off " required
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 """"" required
 Bundle 'gmarik/vundle'
@@ -143,6 +143,7 @@ Bundle 'Indent-Guides'
 """"" colors
 Bundle 'colorer-color-scheme'
 
+call vundle#end() " required
 filetype plugin indent on " required
 
 """"""""""""""""""""""""""""""""""""""""""""
