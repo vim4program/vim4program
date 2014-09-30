@@ -93,6 +93,7 @@ Bundle 'closetag.vim'
 
 " a simple IDE for C/C++
 Bundle 'Side-C'
+Bundle 'flazz/vim-colorschemes'
 
 " A C++ Standard Template Library reference manual
 " Usage: <Leader>tr: go to documentation for the function
@@ -141,7 +142,7 @@ Bundle 'python.vim'
 Bundle 'Indent-Guides'
 
 """"" colors
-Bundle 'colorer-color-scheme'
+" Bundle 'colorer-color-scheme'
 
 call vundle#end() " required
 filetype plugin indent on " required
@@ -176,7 +177,9 @@ filetype plugin on
 filetype indent on
 
 " color theme
-colorscheme colorer
+" colorscheme colorer
+colorscheme kalt
+"colorscheme solarized
 "colorscheme desert
 
 " wildmode
@@ -209,7 +212,7 @@ set incsearch
 """"""""""""""""""""""""""""""""""""""""""""
 " display status line
 set laststatus=2
-"set t_Co=256
+set t_Co=256
 " customize status line
 "set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
 
@@ -221,7 +224,7 @@ set softtabstop=4
 set shiftwidth=4
 
 " replace tab with spaces
-"set expandtab
+set expandtab
 " copy indent from current line when starting a new line
 set autoindent
 
@@ -353,6 +356,9 @@ nmap tb :TagbarToggle<CR>
 
 "map <silent> <F3> :call BufferList()<CR>
 nmap bl :call BufferList()<CR>
+
+" insert time
+imap sj <c-r>=strftime("20%y-%m-%d")<cr>
 
 "ShowMarks
 let g:showmarks_enable = 1
